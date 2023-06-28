@@ -60,7 +60,7 @@ aws ecs update-service --cluster ${ECS_CLUSTER} \
   post {
     always {
       deleteDir()
-      sh 'sudo rmi 472601128281.dkr.ecr.us-east-1.amazonaws.com/hitesh-cicd-assignment:${BUILD_NUMBER}'
+      sh 'docker rmi 472601128281.dkr.ecr.us-east-1.amazonaws.com/hitesh-cicd-assignment:${BUILD_NUMBER}'
     }
 
   }
