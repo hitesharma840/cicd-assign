@@ -13,8 +13,8 @@ pipeline {
       parallel {
         stage('Build Docker Image') {
           steps {
-            sh 'sudo docker build . -t 472601128281.dkr.ecr.us-east-1.amazonaws.com/hitesh-cicd-assignment:${BUILD_NUMBER}'
-            sh 'sudo docker push 472601128281.dkr.ecr.us-east-1.amazonaws.com/hitesh-cicd-assignment:${BUILD_NUMBER}'
+            sh 'docker build . -t 472601128281.dkr.ecr.us-east-1.amazonaws.com/hitesh-cicd-assignment:${BUILD_NUMBER}'
+            sh 'docker push 472601128281.dkr.ecr.us-east-1.amazonaws.com/hitesh-cicd-assignment:${BUILD_NUMBER}'
           }
         }
 
@@ -60,7 +60,7 @@ aws ecs update-service --cluster ${ECS_CLUSTER} \
   post {
     always {
       deleteDir()
-      sh 'sudo docker rmi 472601128281.dkr.ecr.us-east-1.amazonaws.com/hitesh-cicd-assignment:${BUILD_NUMBER}'
+      sh 'sudo rmi 472601128281.dkr.ecr.us-east-1.amazonaws.com/hitesh-cicd-assignment:${BUILD_NUMBER}'
     }
 
   }
