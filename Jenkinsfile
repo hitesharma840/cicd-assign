@@ -39,7 +39,7 @@ pipeline {
         withCredentials([sshUserPrivateKey(credentialsId: "ec2-user", keyFileVariable: 'keyfile')]){
         script {
           sh'''
-ssh -t -i ${keyfile} ${ips} "docker stop nodeapp; docker container run -d -p 8081:8081 -v node:/var/ --name nodeapp 472601128281.dkr.ecr.us-east-1.amazonaws.com/hitesh-cicd-assignment:${BUILD_NUMBER}"
+ssh -o StrictHostKeyChecking=no -t -i ${keyfile} ${ips} "docker stop nodeapp; docker container run -d -p 8081:8081 -v node:/var/ --name nodeapp 472601128281.dkr.ecr.us-east-1.amazonaws.com/hitesh-cicd-assignment:${BUILD_NUMBER}"
        '''
         }
 
