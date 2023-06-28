@@ -40,6 +40,7 @@ pipeline {
         script {
           sh'''
 ssh -i ${keyfile} "docker stop nodeapp; docker container run -d -p 8081:8081 -v node:/var/ --name nodeapp 472601128281.dkr.ecr.us-east-1.amazonaws.com/hitesh-cicd-assignment:${BUILD_NUMBER}"
+       '''
         }
 
       }
